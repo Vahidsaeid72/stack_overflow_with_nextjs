@@ -7,7 +7,8 @@ interface ThemeContextType {
 }
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
-export function ThemeProvider({ childern }: { childern: React.ReactNode }) {
+export function ThemeProvider({ children }: { children: React.ReactNode }) {
+  console.log(children);
   const [mode, setMode] = useState(undefined);
   const handelThemeChange = () => {
     if (mode === "dark") {
@@ -20,7 +21,7 @@ export function ThemeProvider({ childern }: { childern: React.ReactNode }) {
   };
   return (
     <ThemeContext.Provider value={{ mode, setMode }}>
-      {childern}
+      {children}
     </ThemeContext.Provider>
   );
 }

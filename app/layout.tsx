@@ -3,12 +3,13 @@ import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import React from "react";
 import { ThemeProvider } from "@/context/ThemeProvider";
+import favicon from "./site-logo.svg";
 
 export const metadata: Metadata = {
   title: "DevFlow",
   description:
     "A community-driven platform for asking and answering programming questions",
-  icons: "./site-logo.svg",
+  icons: favicon,
 };
 
 const inter = Inter({
