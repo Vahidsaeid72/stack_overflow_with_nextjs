@@ -1,7 +1,17 @@
+'use client'
+
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import logo from "@/assets/images/site-logo.svg";
+import {
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from '@clerk/nextjs'
+
 function Navbar() {
   return (
     <nav className="flex-between background-light900_dark200 sm-px-12 fixed z-50 w-full gap-5 p-6 shadow-light-300 dark:shadow-none">
@@ -13,7 +23,31 @@ function Navbar() {
       </Link>
       GlobalSearch
       <div className="flex-between gap-5">
-        
+        <SignedOut>
+          <SignInButton mode="modal">
+            <button className="small-medium btn-secondary min-h-[41px] w-full rounded-lg px-4 py-3 shadow-none">
+              <span className="primary-text-gradient">Log In</span>
+            </button>
+          </SignInButton>
+          <SignUpButton mode="modal">
+            <button className="small-medium btn-primary min-h-[41px] w-full rounded-lg px-4 py-3 shadow-none">
+              Sign Up
+            </button>
+          </SignUpButton>
+        </SignedOut>
+        <SignedIn>
+          <UserButton 
+            afterSignOutUrl="/"
+            appearance={{
+              elements: {
+                avatarBox: "h-10 w-10"
+              },
+              variables: {
+                colorPrimary: "#6c47ff"
+              }
+            }}
+          />
+        </SignedIn>
       </div>
     </nav>
   );

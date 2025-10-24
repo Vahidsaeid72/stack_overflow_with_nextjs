@@ -1,7 +1,18 @@
-import React from "react";
+'use client'
 
-const SignUp = () => {
-  return <div>SignUp</div>;
-};
+import { SignUp } from '@clerk/nextjs'
 
-export default SignUp;
+export default function Page() {
+  return (
+    <div className="flex min-h-screen items-center justify-center">
+      <SignUp 
+        appearance={{
+          elements: {
+            formButtonPrimary: "bg-[#6c47ff] hover:bg-[#5a3ae6]",
+            footerActionLink: "text-[#6c47ff] hover:text-[#5a3ae6]"
+          }
+        }}
+      />
+    </div>
+  )
+}
