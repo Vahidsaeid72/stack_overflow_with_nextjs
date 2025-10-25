@@ -12,10 +12,18 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [mode, setMode] = useState('dark');
 
   const handelThemeChange = () => {
-    if (localStorage.theme === "dark" || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    if((!('theme' in localStorage))){
+      if(window.matchMedia('(prefers-color-scheme: dark)').matches){
+        setMode('system')
+        document.documentElement.classList.add("dark");
+      }else{
+        setMode('system')
+        document.documentElement.classList.remove("dark");
+      }
+    }
+    else if (localStorage.theme === "dark" ) {
       setMode('dark')
       document.documentElement.classList.add("dark");
-
     } else {
       setMode('light')
       document.documentElement.classList.remove("dark");
