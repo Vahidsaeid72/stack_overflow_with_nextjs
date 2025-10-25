@@ -11,9 +11,12 @@ import {
   SignedOut,
   UserButton,
 } from '@clerk/nextjs'
+import Theme from "./Theme";
 
 function Navbar() {
-  return (
+
+
+    return (
     <nav className="flex-between background-light900_dark200 sm-px-12 fixed z-50 w-full gap-5 p-6 shadow-light-300 dark:shadow-none">
       <Link href="/" className="flex items-center gap-1">
         <Image src={logo} width={23} height={23} alt="myDev" />
@@ -22,6 +25,8 @@ function Navbar() {
         </p>
       </Link>
       GlobalSearch
+      <div className="flex-start gap-4">
+      <Theme/>
       <div className="flex-between gap-5">
         <SignedOut>
           <SignInButton mode="modal">
@@ -48,6 +53,7 @@ function Navbar() {
             }}
           />
         </SignedIn>
+      </div>
       </div>
     </nav>
   );
