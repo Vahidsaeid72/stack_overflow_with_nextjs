@@ -3,6 +3,8 @@ import React from 'react'
 import {useTheme} from "@/context/ThemeProvider";
 import sun from "@/assets/icons/sun.svg";
 import moon from "@/assets/icons/moon.svg";
+import computer from "@/assets/icons/computer.svg";
+
 import Image from 'next/image';
 import {
     Menubar,
@@ -21,11 +23,20 @@ function Theme() {
         <Menubar className='relative border-none bg-transparent shadow-none'>
         <MenubarMenu>
             <MenubarTrigger className='focus:bg-light-900 dark:focus:bg-dark-200 dark:data-[state=open]:bg-dark-200'>
-                {mode==='light'?<Image src={sun} alt='light mode' className='active-theme'/>:<Image src={moon} alt='light mode' className='active-theme'/>}
+                {mode==='light'?<Image src={sun} alt='light mode' className='active-theme'/>:mode==='dark'?<Image src={moon} alt='light mode' className='active-theme'/>:<Image src={computer} alt='light mode' className='active-theme'/>}
             </MenubarTrigger>
             <MenubarContent className='absolute right-[-3rem] mt-3 min-w-[120px] rounded border py-2 dark:border-dark-400 dark:bg-dark-300'>
                 {themes.map((theme,index)=>(
-                        <MenubarItem onClick={()=>{setMode(theme.value)}} key={index}>
+                        <MenubarItem
+                        className='dark:focus:bg-dark-400 flex items-center gap-4 px-2.5 py-2'
+                         onClick={()=>{
+                            setMode(theme.value)
+                            if(theme.value !== 'system'){
+                                localStorage.setItem('theme',theme.value) ;
+                            }else{
+                                localStorage.removeItem('theme');
+                            }
+                            }} key={index}>
                           <Image 
                           src={theme.icon}
                            alt={theme.value}
@@ -33,6 +44,7 @@ function Theme() {
                             height={16}
                             className={`${mode === theme.value && 'active-theme'}`}
                             />
+                            <p className={`body-semibold text-light-500 ${mode === theme.value ? 'text-primary-500':'text-dark100_light900'}`}>{theme.lebale}</p>
                         </MenubarItem>
                 ))}
             </MenubarContent>
