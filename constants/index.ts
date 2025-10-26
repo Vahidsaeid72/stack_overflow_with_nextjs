@@ -7,41 +7,47 @@ export const themes =[
     {value :'light' , lebale : 'Light' , icon:sun},
     {value :'dark' , lebale : 'Dark' , icon:moon},
     {value :'system' , lebale : 'System' , icon:computer}
-] 
-
+]
+import Home from '@/assets/icons/home.svg';
+import Community from '@/assets/icons/users.svg';
+import Collections from '@/assets/icons/star.svg';
+import Jobs from '@/assets/icons/suitcase.svg';
+import Tags from '@/assets/icons/tag.svg';
+import Profile from '@/assets/icons/user.svg';
+import question from '@/assets/icons/question.svg';
 export const sidebarLinks: SidebarLink[] = [
     {
-      imgURL: "/assets/icons/home.svg",
+      imgURL: Home,
       route: "/",
       label: "Home",
     },
     {
-      imgURL: "/assets/icons/users.svg",
+      imgURL: Community,
       route: "/community",
       label: "Community",
     },
     {
-      imgURL: "/assets/icons/star.svg",
+      imgURL: Collections,
       route: "/collection",
       label: "Collections",
     },
     {
-      imgURL: "/assets/icons/suitcase.svg",
+      imgURL: Jobs,
       route: "/jobs",
       label: "Find Jobs",
     },
     {
-      imgURL: "/assets/icons/tag.svg",
+      imgURL: Tags,
       route: "/tags",
       label: "Tags",
     },
     {
-      imgURL: "/assets/icons/user.svg",
+      imgURL: Profile,
       route: "/profile",
       label: "Profile",
     },
     {
-      imgURL: "/assets/icons/question.svg",
+      imgURL: question,
       route: "/ask-question",
       label: "Ask a question",
     },
