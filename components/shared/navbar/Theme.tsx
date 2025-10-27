@@ -37,10 +37,10 @@ function Theme() {
                             }
                             }} key={index}>
                           <Image 
-                          src={theme.icon}
-                           alt={theme.value}
-                            width={16}
-                            height={16}
+                            src={theme.icon}
+                             alt={theme.value}
+                            width={20}
+                            height={20}
                             className={`${mode === theme.value && 'active-theme'}`}
                             />
                             <p className={`body-semibold text-light-500 ${mode === theme.value ? 'text-primary-500':'text-dark100_light900'}`}>{theme.lebale}</p>

@@ -19,24 +19,26 @@ const LeftSideBar = ()=>{
                         <p className={`${isActive?'base-bold':'base-medium'} hidden lg:block text-dark100_light900`}>{item.label}</p>
                     </Link>)
             })}
-
-            <SignedOut>
-                    <Link href={'/sign-in'} >
-                        <Button className={'small-medium  btn-secondary min-h-[41px] w-full rounded px-4 py-5 my-2 shadow-none'}>
-                            <span className={'primary-text-gradient'}>
-                                <span className={'hidden lg:block'}>Log In</span>
-                                <Image className={'lg:hidden'} src={account} alt={'account'}/>
-                            </span>
-                        </Button>
-                    </Link>
-                    <Link href={'/sign-up'} >
-                        <Button className={'small-medium  btn-tertiary text-dark400_light900 light-border-2 min-h-[41px] w-full rounded px-4 py-5 my-2 shadow-none'}>
-                            <span className={'hidden lg:block'}>Sign up</span>
-                            <Image className={'lg:hidden'} src={signup} alt={'account'}/>
-                        </Button>
-                    </Link>
-            </SignedOut>
+            <div>
+                <SignedOut>
+                        <Link href={'/sign-in'} >
+                            <Button className={'small-medium  btn-secondary min-h-[41px] w-full rounded px-4 py-5 my-2 shadow-none'}>
+                                <span className={'primary-text-gradient'}>
+                                    <span className={'hidden lg:block'}>Log In</span>
+                                    <Image className={'lg:hidden'} src={account} alt={'account'}/>
+                                </span>
+                            </Button>
+                        </Link>
+                        <Link href={'/sign-up'} >
+                            <Button className={'small-medium  btn-tertiary text-dark400_light900 light-border-2 min-h-[41px] w-full rounded px-4 py-5 my-2 shadow-none'}>
+                                <span className={'hidden lg:block'}>Sign up</span>
+                                <Image className={'lg:hidden'} src={signup} alt={'account'}/>
+                            </Button>
+                        </Link>
+                </SignedOut>
+            </div>
         </section>
+
     </>
 }
 export default LeftSideBar

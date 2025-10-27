@@ -32,13 +32,13 @@ function Navbar() {
       <div className="flex-between gap-5">
         <SignedOut>
           <SignInButton mode="modal">
-            <button className="small-medium btn-secondary min-h-[41px] w-full rounded px-4 py-3 shadow-none">
+            <button className="small-medium btn-secondary  w-full rounded px-4 py-3 shadow-none">
               <span className="primary-text-gradient">Log In</span>
             </button>
           </SignInButton>
           <SignUpButton mode="modal">
-            <button className="small-medium btn-primary min-h-[41px] w-full rounded px-4 py-3 shadow-none">
-              Sign Up
+            <button className="small-medium btn-primary w-full rounded px-4 py-3 shadow-none whitespace-nowrap">
+              <span className="text-dark300_light700">Sign Up</span>
             </button>
           </SignUpButton>
         </SignedOut>
