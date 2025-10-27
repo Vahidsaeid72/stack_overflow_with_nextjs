@@ -1,13 +1,13 @@
 'use client'
 import {sidebarLinks} from "@/constants";
-import {SheetClose} from "@/components/ui/sheet";
 import Link from "next/link";
 import Image from "next/image";
 import React from "react";
 import {usePathname} from "next/navigation";
 import {SignedOut} from "@clerk/nextjs";
 import {Button} from "@/components/ui/button";
-
+import account from '@/assets/icons/account.svg'
+import signup from '@/assets/icons/sign-up.svg'
 const LeftSideBar = ()=>{
     const pathName = usePathname();
     return<>
@@ -22,13 +22,17 @@ const LeftSideBar = ()=>{
 
             <SignedOut>
                     <Link href={'/sign-in'} >
-                        <Button className={'small-medium btn-secondary min-h-[41px] w-full rounded px-4 py-5 my-2 shadow-none'}>
-                            <span className={'primary-text-gradient'}>Log In</span>
+                        <Button className={'small-medium  btn-secondary min-h-[41px] w-full rounded px-4 py-5 my-2 shadow-none'}>
+                            <span className={'primary-text-gradient'}>
+                                <span className={'hidden lg:block'}>Log In</span>
+                                <Image className={'lg:hidden'} src={account} alt={'account'}/>
+                            </span>
                         </Button>
                     </Link>
                     <Link href={'/sign-up'} >
-                        <Button className={'small-medium btn-tertiary text-dark400_light900 light-border-2 min-h-[41px] w-full rounded px-4 py-5 my-2 shadow-none'}>
-                            Sign up
+                        <Button className={'small-medium  btn-tertiary text-dark400_light900 light-border-2 min-h-[41px] w-full rounded px-4 py-5 my-2 shadow-none'}>
+                            <span className={'hidden lg:block'}>Sign up</span>
+                            <Image className={'lg:hidden'} src={signup} alt={'account'}/>
                         </Button>
                     </Link>
             </SignedOut>
