@@ -14,7 +14,7 @@ const LeftSideBar = ()=>{
         <section className={'hidden background-light900_dark200 light-border sm:flex h-screen border-r shadow-light-300 dark:shadow-none custom-scrollbar flex-col gap-1 pt-32 pb-6 px-2 lg:px-4 fixed'}>
             {sidebarLinks.map(item=>{
                 const isActive = (pathName.includes(item.route) && item.route.length>1) || pathName === item.route ;
-                return(<Link className={`${isActive?'primary-gradient rounded-xl text-light-900':'text-dark300_light900'} flex items-center justify-start gap-4 bg-transparent p-4`} href={item.route}>
+                return(<Link key={item.route} className={`${isActive?'primary-gradient rounded-xl text-light-900':'text-dark300_light900'} flex items-center justify-start gap-4 bg-transparent p-4`} href={item.route}>
                         <Image className={`${isActive ? '' : 'invert-colors'}`} src={item.imgURL} alt={''} width={21} height={21}/>
                         <p className={`${isActive?'base-bold':'base-medium'} hidden lg:block text-dark100_light900`}>{item.label}</p>
                     </Link>)
