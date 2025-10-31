@@ -19,7 +19,7 @@ const tags = [
 ]
 const RightSideBar =()=>{
 
-    return <section className={'hidden background-light900_dark200 light-border xl:flex h-screen overflow-y-auto border-l shadow-light-300 dark:shadow-none text-dark100_light900 custom-scrollbar flex-col gap-1 pt-32  px-2 lg:px-4 fixed right-0 w-[350px]'}>
+    return <section className={'hidden background-light900_dark200 light-border xl:flex h-screen overflow-y-auto border-l shadow-light-300 dark:shadow-none text-dark100_light900 custom-scrollbar flex-col gap-1 pt-32  px-2 lg:px-4 sticky right-0 w-[350px]'}>
         <h3 className={'h3-bold text-dark200_light900'}>Top Questions</h3>
         <div className={'mt-6 flex flex-col gap-[30px]'}>
             {qouestions.map(q=>(
