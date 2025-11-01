@@ -3,6 +3,9 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import React from "react";
 import search from '@/assets/icons/search.svg';
+import Filter from "@/components/shared/filter/Filter";
+import { HomePageFilters } from "@/constants/fiters";
+
 
 const Home = () => {
   return <>
@@ -20,8 +23,13 @@ const Home = () => {
           placeholder="local search ..."
           otherClass="flex-1"
         />
-        {/* <Filters/> */}
+        <Filter
+          filters={HomePageFilters}
+          className="min-h-[56px] sm:min-w-[170px] border-1-[#3333] dark:text-dark300_light700"
+          containerClass=" max-md:flex "
+          />
       </div>
+
   </>;
 };
 
