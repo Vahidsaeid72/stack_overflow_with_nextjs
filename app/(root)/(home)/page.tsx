@@ -5,6 +5,7 @@ import React from "react";
 import search from '@/assets/icons/search.svg';
 import Filter from "@/components/shared/filter/Filter";
 import { HomePageFilters } from "@/constants/fiters";
+import HomeFilters from "@/components/shared/filter/HomeFilters";
 
 
 const Home = () => {
@@ -25,10 +26,11 @@ const Home = () => {
         />
         <Filter
           filters={HomePageFilters}
-          className="min-h-[56px] sm:min-w-[170px] border-1-[#3333] dark:text-dark300_light700"
-          containerClass=" max-md:flex "
+          className="min-h-[56px] w-full sm:max-w-[200px] sm:min-w-[170px]"
+          containerClass="hidden max-md:flex w-full sm:max-w-[200px]"
           />
       </div>
+      <HomeFilters/>
 
   </>;
 };
