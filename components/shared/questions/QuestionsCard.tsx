@@ -1,6 +1,9 @@
 import Link from "next/link";
 import TagRender from "../tag/TagRender";
-
+import Metric from "../metric/Metric";
+import like from "@/assets/icons/like.svg"
+import message from "@/assets/icons/message.svg"
+import eye from "@/assets/icons/eye.svg"
 interface Tag {
     id: number;
     name: string;
@@ -39,9 +42,32 @@ const QuestionsCard = ({ question }: QuestionsCardProps) => {
 
         </div>
         <div className="mt-3 flex flex-wrap gap-2">
-            {tags.map(tag =>(
-                <TagRender id={tag.id} key={tag.id}  name={tag.name} totalQuestions={6} showCount={false} />
+            {tags.map(tag => (
+                <TagRender id={tag.id} key={tag.id} name={tag.name} totalQuestions={6} showCount={false} />
             ))}
+        </div>
+        <div className="flex-between mt-6 w-full flex-wrap gap-3">
+            <Metric
+                imageUrl={like}
+                alt='Upvotes'
+                value={upvotes}
+                title='Votes'
+                textStyle="small-medium text-dark400_light800"
+            />
+            <Metric
+                imageUrl={message}
+                alt='message'
+                value={answers.length}
+                title='Answer'
+                textStyle="small-medium text-dark400_light800"
+            />
+            <Metric
+                imageUrl={eye}
+                alt='eye'
+                value={views}
+                title='views'
+                textStyle="small-medium text-dark400_light800"
+            />
         </div>
     </div>
 }
