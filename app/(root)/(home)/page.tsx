@@ -11,71 +11,71 @@ import QuestionsCard from "@/components/shared/questions/QuestionsCard";
 import NoResult from "@/components/shared/questions/NoResult";
 
 const Questions = [
-  // {
-  //   id :1,
-  //   title:"How can I fix my problem ?",
-  //   tags :[
-  //     {id : 1 , name : 'Javascript'},
-  //     {id : 2 , name : 'Typescript'},
-  //   ],
-  //   author :'Vahid saeid',
-  //   upvotes : 8 ,
-  //   views : 63 ,
-  //   answers :6 ,
-  //   createdAt : '2024-07-26T11:36:02.000Z'
-  // },
-  // {
-  //   id :2,
-  //   title:"How do i use express as custom server in Next.js ?",
-  //   tags :[
-  //     {id : 1 , name : 'Express'},
-  //     {id : 2 , name : 'Nextjs'},
-  //   ],
-  //   author :'Jeams Adam',
-  //   upvotes : 8 ,
-  //   views : 50 ,
-  //   answers :9 ,
-  //   createdAt : '2024-07-27T10:30:02.000Z'
-  // },
-  // {
-  //   id :3,
-  //   title:"How can I fix my problem ?",
-  //   tags :[
-  //     {id : 1 , name : 'Javascript'},
-  //     {id : 2 , name : 'Typescript'},
-  //   ],
-  //   author :'Vahid saeid',
-  //   upvotes : 8 ,
-  //   views : 63 ,
-  //   answers :6 ,
-  //   createdAt : '2024-07-26T11:36:02.000Z'
-  // },
-  // {
-  //   id :4,
-  //   title:"How can I fix my problem ?",
-  //   tags :[
-  //     {id : 1 , name : 'Javascript'},
-  //     {id : 2 , name : 'Typescript'},
-  //   ],
-  //   author :'Vahid saeid',
-  //   upvotes : 8 ,
-  //   views : 63 ,
-  //   answers :6 ,
-  //   createdAt : '2024-07-26T11:36:02.000Z'
-  // },
-  // {
-  //   id :5,
-  //   title:"How can I fix my problem ?",
-  //   tags :[
-  //     {id : 1 , name : 'Javascript'},
-  //     {id : 2 , name : 'Typescript'},
-  //   ],
-  //   author :'Vahid saeid',
-  //   upvotes : 8 ,
-  //   views : 63 ,
-  //   answers :6 ,
-  //   createdAt : '2024-07-26T11:36:02.000Z'
-  // }
+  {
+    id :1,
+    title:"How can I fix my problem ?",
+    tags :[
+      {id : 1 , name : 'Javascript'},
+      {id : 2 , name : 'Typescript'},
+    ],
+    author :[{id:1,name:'Vahid Saeid',picture:'Jeams_Adam.jpg'}],
+    upvotes : 8 ,
+    views : 63 ,
+    answers :[] ,
+    createdAt : new Date('2024-07-26T11:36:02.000Z')
+  },
+  {
+    id :2,
+    title:"How do i use express as custom server in Next.js ?",
+    tags :[
+      {id : 1 , name : 'Express'},
+      {id : 2 , name : 'Nextjs'},
+    ],
+    author :[{id:2,name:'Jeams Adam',picture:'Jeams_Adam.jpg'}],
+    upvotes : 8 ,
+    views : 50 ,
+    answers :[] ,
+    createdAt : new Date('2024-07-27T10:30:02.000Z')
+  },
+  {
+    id :3,
+    title:"How can I fix my problem ?",
+    tags :[
+      {id : 1 , name : 'Javascript'},
+      {id : 2 , name : 'Typescript'},
+    ],
+    author :[{id:3,name:'Jeams Adam',picture:'Jeams_Adam.jpg'}],
+    upvotes : 8 ,
+    views : 63 ,
+    answers :[] ,   
+    createdAt : new Date('2024-07-26T11:36:02.000Z')
+  },
+  {
+    id :4,
+    title:"How can I fix my problem ?",
+    tags :[
+      {id : 1 , name : 'Javascript'},
+      {id : 2 , name : 'Typescript'},
+    ],
+    author :[{id:1,name:'Jeams Adam',picture:'Jeams_Adam.jpg'}],
+    upvotes : 8 ,
+    views : 63 ,
+    answers :[] ,
+    createdAt : new Date('2024-07-26T11:36:02.000Z')
+  },
+  {
+    id :5,
+    title:"How can I fix my problem ?",
+    tags :[
+      {id : 1 , name : 'Javascript'},
+      {id : 2 , name : 'Typescript'},
+    ],
+    author :[{id:1,name:'Jeams Adam',picture:'Jeams_Adam.jpg'}],
+    upvotes : 8 ,
+    views : 63 ,
+    answers :[] ,
+    createdAt : new Date('2024-07-26T11:36:02.000Z')
+  }
 ]
 
 
