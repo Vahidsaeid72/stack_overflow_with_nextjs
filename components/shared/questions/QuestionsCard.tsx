@@ -4,6 +4,8 @@ import Metric from "../metric/Metric";
 import like from "@/assets/icons/like.svg"
 import message from "@/assets/icons/message.svg"
 import eye from "@/assets/icons/eye.svg"
+import avatar from "@/assets/icons/avatar.svg"
+import { formatNumber, getTimeStamp } from "@/lib/utils";
 interface Tag {
     id: number;
     name: string;
@@ -13,7 +15,7 @@ interface Question {
     id: number;
     title: string;
     tags: Tag[];
-    author: Array<object>;
+    author: { id: number; name: string; picture: string }[];
     upvotes: number;
     views: number;
     answers: Array<object>;
@@ -28,10 +30,10 @@ const QuestionsCard = ({ question }: QuestionsCardProps) => {
     const { id, title, tags, author, upvotes, views, answers, createdAt } = question;
 
     return <div key={id} className="card-wrapper p-9 sm:px-11 rounded-[10px]">
-        <div className="flex flex-col-reverse items-center justify-between gap-5 sm:flex-row">
+        <div className="flex flex-col-reverse  justify-between gap-5 sm:flex-row">
             <div>
                 <span className="subtle-regular text-dark400_light700 line-clamp-1 flex sm:hidden">
-                    {String(createdAt)}
+                    {getTimeStamp(createdAt)}
                 </span>
                 <Link href={`/question/${id}`}>
                     <h3 className="sm:h3-semibold base-semibold text-dark200_light900 line-clamp-1 flex-1">
@@ -48,23 +50,31 @@ const QuestionsCard = ({ question }: QuestionsCardProps) => {
         </div>
         <div className="flex-between mt-6 w-full flex-wrap gap-3">
             <Metric
+                imageUrl={avatar}
+                alt='user'
+                value={author[0].name}
+                title={`- ask ${getTimeStamp(createdAt)} `}
+                href={`profile/${author[0].id}`}
+                textStyle="body-medium text-dark400_light700"
+            />
+            <Metric
                 imageUrl={like}
                 alt='Upvotes'
-                value={upvotes}
+                value={formatNumber(upvotes)}
                 title='Votes'
                 textStyle="small-medium text-dark400_light800"
             />
             <Metric
                 imageUrl={message}
                 alt='message'
-                value={answers.length}
+                value={formatNumber(answers.length)}
                 title='Answer'
                 textStyle="small-medium text-dark400_light800"
             />
             <Metric
                 imageUrl={eye}
                 alt='eye'
-                value={views}
+                value={formatNumber(views)}
                 title='views'
                 textStyle="small-medium text-dark400_light800"
             />

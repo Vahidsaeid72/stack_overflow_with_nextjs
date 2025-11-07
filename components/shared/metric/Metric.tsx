@@ -1,9 +1,10 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 const Metric = ({ imageUrl, alt, value, title, href, textStyle, isAuthor }: { imageUrl: string, alt: string, value: number | string, title: string, href?: string, textStyle?: string, isAuthor?: boolean }) => {
-    return (
-        <div className='flex flex-wrap gap-1'>
+    const content = (
+        <>
             <Image
                 src={imageUrl}
                 width={16}
@@ -12,11 +13,30 @@ const Metric = ({ imageUrl, alt, value, title, href, textStyle, isAuthor }: { im
                 className={`object-contain ${href ? 'rounded-full' : ''}`}
             />
             <p className={`${textStyle} flex items-center gap-1`}>
-                {title}
                 {value}
+                {' '}
+                <span className={`small-regular line-clamp-1 ${isAuthor ? 'max-sm:hidden' : ''}`}>
+                    {title}
+                </span>
             </p>
-        </div>
+        </>
     )
+
+
+    if (href) {
+        return (
+            <Link href={href} className='flex-center gap-1'>
+                {content}
+            </Link>)
+    } else {
+        return (
+            <div className='flex flex-wrap gap-1'>
+                {content}
+            </div>
+        )
+    }
+
+
 }
 
 export default Metric

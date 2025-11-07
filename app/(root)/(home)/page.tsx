@@ -33,9 +33,9 @@ const Questions = [
     ],
     author :[{id:2,name:'Jeams Adam',picture:'Jeams_Adam.jpg'}],
     upvotes : 8 ,
-    views : 50 ,
+    views : 582200 ,
     answers :[] ,
-    createdAt : new Date('2024-07-27T10:30:02.000Z')
+    createdAt : new Date('2025-07-27T10:30:02.000Z')
   },
   {
     id :3,
@@ -45,10 +45,10 @@ const Questions = [
       {id : 2 , name : 'Typescript'},
     ],
     author :[{id:3,name:'Jeams Adam',picture:'Jeams_Adam.jpg'}],
-    upvotes : 8 ,
+    upvotes : 90000000 ,
     views : 63 ,
     answers :[] ,   
-    createdAt : new Date('2024-07-26T11:36:02.000Z')
+    createdAt : new Date('2024-03-26T11:36:02.000Z')
   },
   {
     id :4,
@@ -59,7 +59,7 @@ const Questions = [
     ],
     author :[{id:1,name:'Jeams Adam',picture:'Jeams_Adam.jpg'}],
     upvotes : 8 ,
-    views : 63 ,
+    views : 630000000 ,
     answers :[] ,
     createdAt : new Date('2024-07-26T11:36:02.000Z')
   },
@@ -80,8 +80,8 @@ const Questions = [
 
 
 const Home = () => {
-  return <>
-    <div className="flex flex-col-reverse w-full justify-between gap-4 sm:flex-row sm:items-center">
+  return <div>
+    <div className="flex flex-col-reverse w-full justify-between gap-4 sm:flex-row sm:items-center bg-red">
       <h1 className="h1-bold text-dark100_light900">All Questions</h1>
       <Link className="flex flex-end max-sm:w-full" href={'/ask-question'}>
         <Button className="primary-gradient min-h-[46px] rounded-[8px] px-4 py-3 !text-light-900">Ask Questions</Button>
@@ -117,7 +117,7 @@ const Home = () => {
         </div>
       }
     </div>
-  </>;
+  </div>;
 };
 
 export default Home;

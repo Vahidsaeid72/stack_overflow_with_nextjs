@@ -25,7 +25,7 @@ const Filter = ({filters,className,containerClass}:FilterProps) => {
                 </SelectTrigger>
                 <SelectContent className="border-none">
                     {filters.map(f=>(
-                        <SelectItem className="dark:text-dark300_light700 w-full sm:max-w-[200px]" value={f.value}>{f.name}</SelectItem>
+                        <SelectItem key={f.name} className="dark:text-dark300_light700 w-full sm:max-w-[200px]" value={f.value}>{f.name}</SelectItem>
                     ))}
 
                 </SelectContent>
