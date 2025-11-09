@@ -80,7 +80,7 @@ const Questions = [
 
 
 const Home = () => {
-  return <div>
+  return <div >
     <div className="flex flex-col-reverse w-full justify-between gap-4 sm:flex-row sm:items-center bg-red">
       <h1 className="h1-bold text-dark100_light900">All Questions</h1>
       <Link className="flex flex-end max-sm:w-full" href={'/ask-question'}>
