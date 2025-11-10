@@ -11,7 +11,7 @@ import signup from '@/assets/icons/sign-up.svg'
 const LeftSideBar = ()=>{
     const pathName = usePathname();
     return<>
-        <section className={'hidden background-light900_dark200 light-border sm:flex h-screen border-r shadow-light-300 dark:shadow-none custom-scrollbar flex-col gap-1 pt-32 pb-6 px-2 lg:px-4 sticky'}>
+        <section className={'hidden background-light900_dark200 light-border sm:flex h-screen border-r shadow-light-300 dark:shadow-none custom-scrollbar flex-col gap-1 pt-32 pb-6 px-2 lg:px-4 fixed top-0 left-0 z-40 w-[90px] lg:w-[220px]'}>
             {sidebarLinks.map(item=>{
                 const isActive = (pathName.includes(item.route) && item.route.length>1) || pathName === item.route ;
                 return(<Link key={item.route} className={`${isActive?'primary-gradient rounded-xl text-light-900':'text-dark300_light900'} flex items-center justify-start gap-4 bg-transparent p-4`} href={item.route}>
