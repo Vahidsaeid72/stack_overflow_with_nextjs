@@ -1,5 +1,6 @@
 "use client"
-
+import { useRef } from 'react';
+import { Editor } from '@tinymce/tinymce-react';
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { Button } from "@/components/ui/button"
@@ -15,11 +16,14 @@ import {
 import { Input } from "@/components/ui/input"
 import { QuestionSchema } from "@/lib/validation"
 import { z } from "zod"
+import { useTheme } from '@/context/ThemeProvider';
 
 
 
 
 const QuestionForm = () => {
+  const { mode, setMode } = useTheme();
+  const editorRef = useRef(null);
 
 
   const form = useForm<z.infer<typeof QuestionSchema>>({
@@ -58,11 +62,44 @@ const QuestionForm = () => {
           <FormField
             control={form.control}
             name="explanation"
-            render={({ field }) => ( 
+            render={({ field }) => (
               <FormItem className="flex flex-col w-full gap-3">
-                <FormLabel className="paragraph-semibold text-dark400_light800">Detailed explanation of your problem</FormLabel>  
+                <FormLabel className="paragraph-semibold text-dark400_light800">Detailed explanation of your problem</FormLabel>
                 <FormControl className="mt-3.5">
-                {/* add editor here */}
+                  <Editor
+                    apiKey="04ighgdl3olj528i47uqvlwejqalqzpciyhkoxmnhylsya6k"
+                    onInit={(_evt, editor) => editorRef.current = editor}
+                    initialValue=""
+                    init={{
+                      height: 300,
+                      menubar: false,
+                      plugins: [
+                        'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
+                        'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+                        'insertdatetime', 'media', 'table', 'code', 'help', 'wordcount'
+                      ],
+                      toolbar:
+                        'undo redo | blocks | bold italic forecolor | alignleft aligncenter ' +
+                        'alignright alignjustify | bullist numlist outdent indent | removeformat | help',
+
+
+                      skin: mode === 'dark' ? 'oxide-dark' : 'oxide',
+                      content_css: mode === 'dark' ? 'dark' : 'default',
+
+
+                      content_style: `
+                              body {
+                                font-family: Inter, sans-serif;
+                                font-size: 16px;
+                                background-color: ${mode === 'dark' ? '#1f2937' : '#f3f4f6'}; /* dark: gray-800, light: gray-100 */
+                                color: ${mode === 'dark' ? '#e5e7eb' : '#111827'}; /* dark: gray-200, light: gray-900 */
+                                border-radius: 0.75rem;
+                              }
+                            `,
+                    }}
+                  />
+
+
                 </FormControl>
                 <FormDescription className="body-regular mt-2.5 text-light-500">
                   introduce the problem and scope of the question
@@ -78,9 +115,9 @@ const QuestionForm = () => {
               <FormItem className="flex flex-col w-full">
                 <FormLabel className="paragraph-semibold text-dark400_light800">Tags</FormLabel>
                 <FormControl className="mt-3.5">
-                  <Input 
-                  className="no-focus paragraph-regular background-light900_dark300 text-dark300_light700 min-h-[56px] border-2-light-200 dark:border-dark-400 rounded-[12px] px-4 py-3 shadow-none outline-none"
-                  {...field} />
+                  <Input
+                    className="no-focus paragraph-regular background-light900_dark300 text-dark300_light700 min-h-[56px] border-2-light-200 dark:border-dark-400 rounded-[12px] px-4 py-3 shadow-none outline-none"
+                    {...field} />
                 </FormControl>
                 <FormDescription className="body-regular mt-2.5 text-light-500">
                   Add up to 3 tags to describe what your question is about. You need to press enter to add a tag.

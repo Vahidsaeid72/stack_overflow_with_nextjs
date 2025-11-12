@@ -16,7 +16,7 @@ const LeftSideBar = ()=>{
                 const isActive = (pathName.includes(item.route) && item.route.length>1) || pathName === item.route ;
                 return(<Link key={item.route} className={`${isActive?'primary-gradient rounded-xl text-light-900':'text-dark300_light900'} flex items-center justify-start gap-4 bg-transparent p-4`} href={item.route}>
                         <Image className={`${isActive ? '' : 'invert-colors'}`} src={item.imgURL} alt={''} width={21} height={21}/>
-                        <p className={`${isActive?'base-bold':'base-medium'} hidden lg:block text-dark100_light900`}>{item.label}</p>
+                        <p className={`${isActive?'base-bold text-[17px] ml-[-4px]':'base-medium'} hidden lg:block text-dark100_light900`}>{item.label}</p>
                     </Link>)
             })}
             <div>
