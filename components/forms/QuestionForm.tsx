@@ -1,5 +1,5 @@
 "use client"
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -21,37 +21,39 @@ import { Badge } from '../ui/badge';
 import Image from 'next/image';
 import closeIcon from '@/assets/icons/close.svg';
 
+const type = 'create';
 
-const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>, field: any) => {
-  if (e.key === 'Enter' && field.name === 'tags') {
-    e.preventDefault();
-    const tagInput = e.target as HTMLInputElement;
-    const tagValue = tagInput.value.trim();
-    if (tagValue != '') {
-      if (tagInput.value.length > 15) {
-        return Form.setError('tags', { type: 'required', message: 'Tag must be at most 15 characters.' });
-      }
-    }
-    if (!field.value.includes(tagValue as never)) {
-      field.onChange([...field.value, tagValue as never]);
-      tagInput.value = '';
-      Form.clearErrors('tags');
-    }
-    else {
-      Form.trigger();
-    }
-  }
-} 
-
-const handleRemoveTag = (tag: string, field: any) => {
-  field.onChange(field.value.filter((t: string) => t !== tag));
-  Form.clearErrors('tags');
-}
-
-  const QuestionForm = () => {
+const QuestionForm = () => {
   const { mode, setMode } = useTheme();
   const editorRef = useRef(null);
+  const [submiting, setSubmiting] = useState(false);
 
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>, field: any) => {
+    if (e.key === 'Enter' && field.name === 'tags') {
+      e.preventDefault();
+      const tagInput = e.target as HTMLInputElement;
+      const tagValue = tagInput.value.trim();
+      if (tagValue != '') {
+        if (tagInput.value.length > 15) {
+          return Form.setError('tags', { type: 'required', message: 'Tag must be at most 15 characters.' });
+        }
+      }
+      if (!field.value.includes(tagValue as never)) {
+        field.onChange([...field.value, tagValue as never]);
+        tagInput.value = '';
+        Form.clearErrors('tags');
+      }
+      else {
+        Form.trigger();
+      }
+    }
+  }
+
+  const handleRemoveTag = (tag: string, field: any) => {
+    field.onChange(field.value.filter((t: string) => t !== tag));
+    Form.clearErrors('tags');
+  }
 
   const form = useForm<z.infer<typeof QuestionSchema>>({
     resolver: zodResolver(QuestionSchema),
@@ -63,7 +65,15 @@ const handleRemoveTag = (tag: string, field: any) => {
   })
 
   function onSubmit(values: z.infer<typeof QuestionSchema>) {
-    console.log(values)
+    setSubmiting(true);
+    try {
+
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setSubmiting(false);
+    }
+
   }
 
   return (
@@ -96,7 +106,8 @@ const handleRemoveTag = (tag: string, field: any) => {
                   <Editor
                     apiKey="04ighgdl3olj528i47uqvlwejqalqzpciyhkoxmnhylsya6k"
                     onInit={(_evt, editor) => editorRef.current = editor}
-                    initialValue=""
+                    initialValue={field.value}
+                    onEditorChange={(content) => field.onChange(content)}
                     init={{
                       height: 300,
                       menubar: false,
@@ -109,10 +120,8 @@ const handleRemoveTag = (tag: string, field: any) => {
                         'undo redo | blocks | bold italic forecolor | alignleft aligncenter ' +
                         'alignright alignjustify | bullist numlist outdent indent | removeformat | help',
 
-
                       skin: mode === 'dark' ? 'oxide-dark' : 'oxide',
                       content_css: mode === 'dark' ? 'dark' : 'default',
-
 
                       content_style: `
                               body {
@@ -153,7 +162,7 @@ const handleRemoveTag = (tag: string, field: any) => {
                           key={tag}
                           className='subtle-medium background-light800_dark300 text-light400_light500 border-none flex items-center justify-center gap-2 rounded-xl px-3 py-2 capitalize'
                           onClick={() => handleRemoveTag(tag, field)}
-                          >
+                        >
                           {tag}
                           <Image src={closeIcon} alt='close' width={12} height={12} className=' cursor-pointer object-contain invert-0 ml-2' />
 
@@ -170,7 +179,9 @@ const handleRemoveTag = (tag: string, field: any) => {
               </FormItem>
             )}
           />
-          <Button className='background-light800_dark300 text-dark300_light700 rounded-[12px]' type="submit">Submit</Button>
+          <Button className='primary-gradient w-fit !text-light-900 rounded-[12px]' disabled={submiting} type="submit">
+            {submiting ? (type === 'create' ? "Posting..." : "Editing...") : (type === 'create' ? "Create Question" : "Edit Question")}
+          </Button>
         </form>
       </Form>
     </div>
