@@ -20,6 +20,7 @@ import { useTheme } from '@/context/ThemeProvider';
 import { Badge } from '../ui/badge';
 import Image from 'next/image';
 import closeIcon from '@/assets/icons/close.svg';
+import { createQuestion } from '@/lib/actions/question.action';
 
 const type = 'create';
 
@@ -64,10 +65,10 @@ const QuestionForm = () => {
     },
   })
 
-  function onSubmit(values: z.infer<typeof QuestionSchema>) {
+  async function onSubmit(values: z.infer<typeof QuestionSchema>) {
     setSubmiting(true);
     try {
-
+        await createQuestion({});
     } catch (error) {
       console.log(error);
     } finally {
@@ -122,7 +123,12 @@ const QuestionForm = () => {
 
                       skin: mode === 'dark' ? 'oxide-dark' : 'oxide',
                       content_css: mode === 'dark' ? 'dark' : 'default',
-
+                      onBlur: () => {
+                        field.onBlur();
+                      },
+                      onEditorChange: (content) => {
+                        field.onChange(content);
+                      },
                       content_style: `
                               body {
                                 font-family: Inter, sans-serif;

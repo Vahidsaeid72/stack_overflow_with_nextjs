@@ -10,7 +10,11 @@ export const connectToDatabase = async () => {
     if(isConnected) return console.log('Already connected to the database');
 
     try {
-        await mongoose.connect(process.env.MONGODB_URL);
+        await mongoose.connect(process.env.MONGODB_URL , {
+            dbName: "dev-owerflow",
+        });
+        isConnected = true;
+        console.log('Connected to the database');
     }
     catch (error) {
         console.log(error);
